@@ -121,7 +121,9 @@ class LibraryMediaManager {
                                                          presetName: YPConfig.video.compression)
                 exportSession?.outputFileType = YPConfig.video.fileType
                 exportSession?.shouldOptimizeForNetworkUse = true
-                exportSession?.videoComposition = videoComposition
+                if YPConfig.showsVideoTrimmer {
+                    exportSession?.videoComposition = videoComposition
+                }
                 exportSession?.outputURL = URL(fileURLWithPath: NSTemporaryDirectory())
                     .appendingUniquePathComponent(pathExtension: YPConfig.video.fileType.fileExtension)
                 
